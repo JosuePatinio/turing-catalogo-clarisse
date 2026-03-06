@@ -1,4 +1,5 @@
 <?php 
+session_start();
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
@@ -8,6 +9,7 @@ include_once '../config/db.php';
 $datos = json_decode(file_get_contents("php://input"));
 
 if(!empty($datos->username) && !empty($datos->password)){
+
     $user = $conexion ->real_escape_string($datos->username);
     $pass = $datos->password;
 
@@ -18,9 +20,13 @@ if(!empty($datos->username) && !empty($datos->password)){
         $fila = $resultado->fetch_assoc();
 
         if(password_verify($pass, $fila['password'])){
+            $_SESSION['id_usuario'] = $fila['id'];
+            $_SESSION['username'] = $fila['nombre_usuario'];
+            $_SESSION['rol'] = $fila['rol'];
+            
             echo json_encode([
                 "status" => "success",
-                "message" => "Acceso concedido",
+                "message" => "Acceso exitoso",
                 "user" => [
                     "id" => $fila['id'],
                     "username" =>$fila['nombre_usuario'],
@@ -28,7 +34,7 @@ if(!empty($datos->username) && !empty($datos->password)){
                 ]
             ]);
         }else{
-        echo json_encode(["status" => "error", "message" => "Contraseña Incorrecta"]);
+            echo json_encode(["status" => "error", "message" => "Credenciales Incorrecta"]);
     }
     } else{
         echo json_encode(["status" => "error", "message" => "Usuario no encontrado"]);
