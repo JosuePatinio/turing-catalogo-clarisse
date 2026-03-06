@@ -1,0 +1,86 @@
+<?php include 'includes/header.php'; ?>
+
+<section class =barra">
+
+</section>
+
+<section class="banner">
+    <h1>Amor en cada costura</h1>
+    <p>La mejor calidad en ropa para tu bebé, desde recién nacidos hasta el primer año.</p>
+    <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+    
+    <h2 class="section-title">Etapas</h2>
+
+</section>
+
+<section class="categorias-grid">
+
+    <div class="cat-block">0-3 Meses</div>
+    <div class="cat-block">3-6 Meses</div>
+    <div class="cat-block">6-12 Meses</div>
+</section>
+
+
+<h2 class="section-title" id="catalogo style="margin-top: 100px;">Nuestros Productos</h2>
+<div id="productos-lista" class="contenedor">
+    </div>
+
+<section class="beneficios">
+    <div class="beneficio-item">
+        <h4>Algodón Orgánico</h4>
+        <p>Suave con la piel de tu bebé y el planeta.</p>
+    </div>
+    <div class="beneficio-item">
+        <h4>Entrega Rápida</h4>
+        <p>Recibe tu pedido en menos de 48 horas.</p>
+    </div>
+    <div class="beneficio-item">
+        <h4>Calidad Garantizada</h4>
+        <p>Prendas duraderas para cada aventura.</p>
+    </div>
+    <div class="beneficio-item">
+        <h4>Calidad Garantizada</h4>
+        <p>Prendas duraderas para cada aventura.</p>
+    </div>
+
+
+</section>
+
+<section class="circulos">
+    <div class="circulo-item">
+        <div class="avatar"></div>
+        <p>"Excelente calidad."</p>
+        <strong>- María G.</strong>
+    </div>
+    <div class="circulo-item">
+        <div class="avatar"></div>
+        <p>"Los diseños son hermosos."</p>
+        <strong>- Carlos R.</strong>
+    </div>
+    <div class="circulo-item">
+        <div class="avatar"></div>
+        <p>"Envío muy veloz."</p>
+        <strong>- Lucía M.</strong>
+    </div>
+</section>
+
+<script>
+    fetch('../backend/api/get_productos.php')
+        .then(res => res.json())
+        .then(data => {
+            const lista = document.getElementById('productos-lista');
+            data.forEach(p => {
+                lista.innerHTML += `
+                    <div class="tarjeta-producto">
+                        <img src="${p.imagen_url}" alt="${p.nombre}" class="producto-img">
+                        
+                        <h3>${p.nombre}</h3>
+                        <p class="precio">$${p.precio}</p>
+                        <small>Etapa: ${p.rango_edad}</small>
+                    </div>
+                `;
+            });
+        });
+</script>
+
+<?php include 'includes/footer.php'; ?>
