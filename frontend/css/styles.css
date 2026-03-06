@@ -1,0 +1,437 @@
+/* Variables con la Paleta Opción 3 */
+:root {
+    --oscuro-principal: #0f2d3c;  /* Azul Petróleo profundo */
+    --gris-fondo: #c8d2d7;        /* Gris azulado claro */
+    --verde-medio: #4ba591;       /* Verde jade */
+    --verde-brillante: #1ebe91;   /* Esmeralda suave */
+    --verde-claro: #41d791;       /* Menta */
+    --blanco: #ffffff;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Evita scroll horizontal accidental */
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--gris-fondo); /* Fondo general de la página */
+    color: var(--oscuro-principal);
+    margin: 0;
+}
+
+/*---------------------------------------------------------------- */
+
+/* Navegación */
+nav {
+    background-color: var(--oscuro-principal);
+    color: var(--blanco);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+nav h2 { margin: 0; color: var(--verde-claro); }
+
+/*---------------------------------------------------------------- */
+
+/* Tarjetas de Producto */
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+.tarjeta {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden; 
+    transition: transform 0.3s;
+}
+
+.producto-img {
+    width: 100%;
+    height: 300px; /* Altura uniforme para todas las tarjetas */
+    object-fit: cover; /* Recorta la imagen para que llene el cuadro sin deformarse */
+    border-radius: 10px 10px 0 0;
+    display: block;
+}
+
+.tarjeta:hover {
+    transform: scale(1.03);
+    border-bottom: 5px solid var(--verde-brillante);
+}
+
+.precio {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--verde-medio);
+    margin: 10px 0;
+}
+
+/*---------------------------------------------------------------- */
+
+/* Botones */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--verde-brillante);
+    color: var(--oscuro-principal);
+}
+
+.btn-primary:hover {
+    background-color: var(--verde-claro);
+    box-shadow: 0 0 15px var(--verde-claro);
+}
+
+
+/*---------------------------------------------------------------- */
+
+
+/* Estilo para el Formulario de Admin */
+.form-container {
+    background: var(--blanco);
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid var(--gris-fondo);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+
+/*---------------------------------------------------------------- */
+
+
+/*Banner de index*/
+.banner{
+    width: 100%;
+    background-color: var(--oscuro-principal);
+    color: var(--blanco);
+    padding: 120px 20px 160px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.banner h1 { font-size: 3rem; margin-bottom: 10px; color: var(--verde-claro); }
+.banner h2 {
+    margin-top: 40px;
+    color: var(--verde-claro);
+    font-size: 2rem;
+}
+.banner p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+
+
+/*---------------------------------------------------------------- */
+
+
+/*Bloques verdes */
+.section-title { text-align: center; margin-top: 50px; font-size: 2rem; }
+
+.categorias-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+
+    margin-top: -75px;
+    position: relative; 
+    z-index: 10;
+}
+
+.cat-block {
+    background: var(--verde-brillante);
+    flex: 1;
+    max-width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--oscuro-principal);
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.cat-block:hover { background: var(--verde-claro); transform: translateY(-5px); }
+
+
+/*---------------------------------------------------------------- */
+
+/* SECCIÓN Beneficios */
+.beneficios {
+    background-color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 80px 20px;
+}
+
+.beneficio-item { 
+    max-width: 250px; 
+    flex: 1;
+    background-color: var(--verde-brillante); /* Color sólido para los primeros */
+    height: 250px; /* Los hace cuadrados */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 20px;
+    color: var(--oscuro-principal);
+}
+
+
+/*---------------------------------------------------------------- */
+/* Círculos para testimonios */
+.circulos {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.circulo-item { text-align: center; }
+.avatar { 
+    width: 120px; height: 120px; 
+    background: var(--oscuro-principal); 
+    border-radius: 50%; 
+    margin: 0 auto 15px; 
+}
+
+header {
+    width: 100%;
+}
+
+
+/*---------------------------------------------------------------- */
+/* BARRA SUPERIOR (AZUL OSCURO) */
+.top-bar {
+    background-color: var(--oscuro-principal);
+    color: var(--gris-fondo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 60px; 
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo para los textos informativos de la izquierda */
+.top-bar-left span {
+    margin-right: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.top-bar-left i {
+    color: var(--verde-claro);
+}
+
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--gris-fondo);
+    font-size: 1.3rem;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--verde-brillante);
+    transform: translateY(-5px); 
+}
+
+/* Separador Visual */
+.separator {
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 100;
+}
+
+/* Link de Login/Cuenta */
+.login-link {
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+
+.login-link:hover {
+    color: var(--verde-claro);
+}
+
+.login-link i {
+    font-size: 1.1rem;
+}
+
+/*---------------------------------------------------------------- */
+/* BARRA DE NAVEGACIÓN (LOGO Y LINKS) */
+.main-nav {
+    background-color: var(--gris-fondo);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--oscuro-principal);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--oscuro-principal);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px; 
+    height: 3px;
+    background-color: var(--verde-brillante);
+    transition: width 0.3s ease; 
+}
+
+.nav-links a:hover::after {
+    width: 60px;
+}
+
+.nav-links a:hover {
+    color: var(--verde-medio);
+}
+
+
+
+/*---------------------------------------------------------------- */
+/* FOOTER ESTILO WIREFRAME */
+.main-footer {
+    background-color: var(--oscuro-principal);
+    color: var(--gris-fondo);
+    padding: 60px 50px 20px 50px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col h3 {
+    color: var(--verde-claro);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--verde-brillante);
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: var(--gris-fondo);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--verde-claro);
+    padding-left: 5px;
+}
+
+.social-icons-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.icon-box-small {
+    width: 35px;
+    height: 35px;
+    background-color: var(--verde-brillante);
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.icon-box-small:hover {
+    background-color: var(--verde-claro);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(200, 210, 215, 0.1);
+    margin-top: 50px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
