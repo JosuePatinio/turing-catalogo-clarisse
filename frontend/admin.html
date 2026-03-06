@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración - Clarisse</title>
+</head>
+<body>
+    <h1>Panel de Administración</h1>
+    <p id="bienvenida"></p>
+    <button onclick="logout()">Cerrar Sesión</button>
+
+    <hr>
+    <h3>Gestión de Inventario</h3>
+
+    <script>
+        // Protección de ruta: Si no hay usuario o no es admin, mandarlo al login
+        const userStr = localStorage.getItem('usuario');
+        if(!userStr) {
+            window.location.href = 'login.html';
+        }
+        
+        const user = JSON.parse(userStr);
+        if(user.rol !== 'admin') {
+            alert("Acceso denegado");
+            window.location.href = 'index.html';
+        }
+
+        document.getElementById('bienvenida').innerText = "Hola, Administrador: " + user.username;
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
