@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 
-include_once '../config/db.php';
+require_once '../config/db.php';
 
 $datos = json_decode(file_get_contents("php://input"));
 

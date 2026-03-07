@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 //Conexion a la base de datos
-include_once '../config/db.php';
+require_once '../config/db.php';
 
 $sql = "SELECT p.id, p.nombre, p.descripcion, p.precio, p.imagen_url, c.rango_edad
         FROM productos p
