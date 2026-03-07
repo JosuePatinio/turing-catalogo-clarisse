@@ -1,9 +1,9 @@
 <?php 
 if (session_status() === PHP_SESSION_NONE) { session_start(); } 
+include 'includes/head.php';
 ?>
 
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <header>
     <div class="top-bar">
         <div class="top-bar-left">
@@ -21,13 +21,11 @@ if (session_status() === PHP_SESSION_NONE) { session_start(); }
             <span class="separator">|</span>
             <div id="auth-section">
                 <?php if(isset($_SESSION['username'])): ?>
-                    <span style="margin-right:15px;">Bienvenido, <strong><?php echo $_SESSION['username']; ?></strong></span>
+                    <span class="user-welcome"">Bienvenido, <strong><?= htmlspecialchars($_SESSION['username']) ?></strong></span>
                     <?php if($_SESSION['rol'] === 'admin'): ?>
                         <a href="admin.php" class="btn btn-primary" style="padding: 5px 10px; font-size: 0.7rem;">Panel Admin</a>
                     <?php endif; ?>
                     <a href="../backend/api/logout.php" class="login-link"><i class="fa-solid fa-right-from-bracket"></i> Salir</a>
-                <?php else: ?>
-                    <a href="login.php" class="login-link"><i class="fa-solid fa-user-circle"></i> Iniciar Sesión</a>
                 <?php endif; ?>
             </div>
         </div>

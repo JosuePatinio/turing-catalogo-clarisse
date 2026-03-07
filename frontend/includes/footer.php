@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/styles.css">
+<?php include 'includes/head.php';?>
 </main> <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-col">
