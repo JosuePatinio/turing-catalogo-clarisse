@@ -1,4 +1,13 @@
-<link rel="stylesheet" href="css/styles.css">
+<?php if(isset($_GET['error'])): ?>
+    <div class="alerta-auth">
+        <?php 
+            if($_GET['error'] === 'auth_required'){
+                echo '<i class="fa-solid fa-lock"></i> <strong> Debes iniciar sesión para acceder al catálogo</strong>';
+            } else{}
+        ?>
+    </div>
+<?php endif; ?>
+<?php include 'includes/head.php';?>
 
 <div class="form-container">
     <h2>Iniciar Sesión</h2>

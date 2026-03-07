@@ -1,8 +1,17 @@
-<?php include 'includes/header.php'; ?>
+<?php 
+require_once 'includes/auth_check.php';
+//Verificacion de login
+requerir_login();
+include 'includes/header.php'; 
+if (isset($_GET['error']) && $_GET['error'] === 'admin_only'): ?>
+    <div class="alerta-auth">
+        <i class="fa-solid fa-shield-halved"></i>
+        <strong>ACCESO DENEGADO:</strong> No tienes permisos para entrar al Panel de Administración.
+    </div>
+<?php endif;
+?>
 
-<section class =barra">
 
-</section>
 
 <section class="banner">
     <h1>Amor en cada costura</h1>
@@ -22,8 +31,7 @@
 
 
 <h2 class="section-title" id="catalogo style="margin-top: 100px;">Nuestros Productos</h2>
-<div id="productos-lista" class="contenedor">
-    </div>
+<div id="productos-lista" class="contenedor"> </div>
 
 <section class="beneficios">
     <div class="beneficio-item">
