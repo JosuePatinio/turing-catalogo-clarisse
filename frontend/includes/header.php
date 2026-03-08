@@ -33,7 +33,12 @@ include 'includes/head.php';
 
     <nav class="main-nav">
         <div class="logo">
-            <a href="index.php">Clarisse</a>
+            <a href="index.php" class="logo-link">
+                <span class="logo-text">
+                    <span class="logo-light">Catálogo</span> 
+                    <span class="logo-bold">Clarisse</span>
+                </span>
+            </a>
         </div>
         <ul class="nav-links">
             <li><a href="index.php">Inicio</a></li>
