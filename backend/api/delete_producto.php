@@ -1,9 +1,13 @@
 <?php 
 header("Access-Control-Allow-Origin: *");
-header("Contetn-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
-
+header("Content-Type: application/json; charset=UTF-8");
 include_once '../config/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
+    http_response_code(405);
+    echo json_encode(["status" => "error", "message" => "Método no permitido. Se esperaba DELETE."]);
+    exit();
+}
 
 $datos = json_decode(file_get_contents("php://input"));
 

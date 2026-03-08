@@ -1,6 +1,13 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 include_once '../config/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
+    http_response_code(405); //ERror por si el metodo no es el correcto
+    echo json_encode(["status" => "error", "message" => "Método no permitido. Se esperaba PUT."]);
+    exit();
+}
 
 $datos = json_decode(file_get_contents("php://input"));
 
