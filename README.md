@@ -29,3 +29,7 @@ Abrir phpMyAdmin y crear una BD con nombre: catalogo_clarisse
 6. Acceder al proyecto desde el navegador
 localhost/turing-catalogo-clarisse/frontend/login.php
   
+
+Credenciales:
+Admin: admin_turing | Password: 0123456 (Tiene acceso al CRUD)
+User: Cesar Franco | Password: 123456
