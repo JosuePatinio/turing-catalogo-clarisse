@@ -43,7 +43,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2026 Clarisse Bebé. Todos los derechos reservados. | Prueba Técnica Turing IA</p>
+            <p>&copy; 2026 Clarisse Bebé. Todos los derechos reservados. | Proyecto de prueba</p>
         </div>
     </footer>
 </body>

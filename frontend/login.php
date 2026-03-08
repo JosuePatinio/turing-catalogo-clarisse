@@ -18,9 +18,29 @@
 </div>
 
 <script>
+    // limpieza automatica al detectar un cierre de sesion 
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        if (urlParams.get('logout') === 'success') {
+            // Borrar los datos del frontend
+            localStorage.removeItem('usuario');
+            localStorage.clear();
+            
+            // Limpiar la URL 
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    });
+
+    //inicio de sesion
     function login() {
         const user = document.getElementById('username').value;
         const pass = document.getElementById('password').value;
+
+        if (!user || !pass) {
+            document.getElementById('mensaje').innerText = "Por favor, ingresa usuario y contraseña.";
+            return;
+        }
 
         fetch('../backend/api/login.php', {
             method: 'POST',
@@ -30,8 +50,10 @@
         .then(res => res.json())
         .then(data => {
             if(data.status === "success") {
+                // Guardar usuario en frontend
                 localStorage.setItem('usuario', JSON.stringify(data.user));
-                // Redirigir a las nuevas rutas .php
+                
+                // Redirigir por rol
                 if(data.user.rol === 'admin') {
                     window.location.href = 'admin.php';
                 } else {
@@ -40,6 +62,10 @@
             } else {
                 document.getElementById('mensaje').innerText = data.message;
             }
+        })
+        .catch(error => {
+            console.error("Error en la solicitud:", error);
+            document.getElementById('mensaje').innerText = "Error de conexión con el servidor.";
         });
     }
 </script>
