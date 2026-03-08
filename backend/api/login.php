@@ -34,7 +34,7 @@ if(!empty($datos->username) && !empty($datos->password)){
                 ]
             ]);
         }else{
-            echo json_encode(["status" => "error", "message" => "Credenciales Incorrecta"]);
+            echo json_encode(["status" => "error", "message" => "Credenciales Incorrectas"]);
     }
     } else{
         echo json_encode(["status" => "error", "message" => "Usuario no encontrado"]);
