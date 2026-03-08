@@ -118,7 +118,8 @@ include 'includes/header.php';
         }
 
         // Si hay ID usamos la ruta de update, si está vacío usamos la de create
-        const url = id ? '../backend/api/update_producto.php' : '../backend/api/create_producto.php';
+        const metodoHttp = id ? 'PUT': 'POST';
+        const urlApi = id ? '../backend/api/update_producto.php' : '../backend/api/create_producto.php';
 
         const producto = {
             id: id,
@@ -130,8 +131,8 @@ include 'includes/header.php';
             id_categoria: id_categoria
         };
 
-        fetch(url, {
-            method: 'POST',
+        fetch(urlApi, {
+            method: metodoHttp,
             body: JSON.stringify(producto),
             headers: { 'Content-Type': 'application/json' }
         })
@@ -150,7 +151,7 @@ include 'includes/header.php';
         if (!confirm("¿Estás seguro de eliminar este producto?")) return;
 
         fetch('../backend/api/delete_producto.php', {
-            method: 'POST',
+            method: 'DELETE',
             body: JSON.stringify({ id: id }),
             headers: { 'Content-Type': 'application/json' }
         })
