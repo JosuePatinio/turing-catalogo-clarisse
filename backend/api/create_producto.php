@@ -19,6 +19,15 @@ if(!empty($datos->nombre) && !empty($datos->precio) && !empty($datos->id_categor
     $id_categoria = (int)$datos->id_categoria;
     $imagen_url = $conexion->real_escape_string($datos->imagen_url);
 
+    if($precio <= 0){
+        echo json_encode(["status" => "error", "message" => "El precio debe ser mayor a 0!"]);
+        exit();
+    }
+    if($stock < 0) {
+        $stock = 0;
+    }
+    
+
     $sql = "INSERT INTO productos (nombre, descripcion, precio, stock, imagen_url, id_categoria) 
             VALUES ('$nombre', '$descripcion', $precio, $stock, '$imagen_url', $id_categoria)";
 
