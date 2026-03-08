@@ -2,6 +2,7 @@
 require_once 'includes/auth_check.php';
 //Verificacion de login
 requerir_login();
+
 include 'includes/header.php'; 
 if (isset($_GET['error']) && $_GET['error'] === 'admin_only'): ?>
     <div class="alerta-auth">
@@ -23,11 +24,14 @@ if (isset($_GET['error']) && $_GET['error'] === 'admin_only'): ?>
 </section>
 
 <section class="categorias-grid">
-
-    <div class="cat-block">0-3 Meses</div>
-    <div class="cat-block">3-6 Meses</div>
-    <div class="cat-block">6-12 Meses</div>
-</section>
+    <div class="cat-block" onclick="filtrarProductos('todos')">Todos</div>
+    <div class="cat-block" onclick="filtrarProductos(6)">Recién Nacido</div>
+    <div class="cat-block" onclick="filtrarProductos(1)">1-3 Meses</div>
+    <div class="cat-block" onclick="filtrarProductos(2)">3-6 Meses</div>
+    <div class="cat-block" onclick="filtrarProductos(3)">6-9 Meses</div>
+    <div class="cat-block" onclick="filtrarProductos(4)">9-12 Meses</div>
+    <div class="cat-block" onclick="filtrarProductos(5)">12-18 Meses</div>
+</section>>
 
 
 <h2 class="section-title" id="catalogo style="margin-top: 100px;">Nuestros Productos</h2>
@@ -73,22 +77,39 @@ if (isset($_GET['error']) && $_GET['error'] === 'admin_only'): ?>
 </section>
 
 <script>
-    fetch('../backend/api/get_productos.php')
-        .then(res => res.json())
-        .then(data => {
-            const lista = document.getElementById('productos-lista');
-            data.forEach(p => {
-                lista.innerHTML += `
-                    <div class="tarjeta-producto">
-                        <img src="${p.imagen_url}" alt="${p.nombre}" class="producto-img">
-                        
-                        <h3>${p.nombre}</h3>
-                        <p class="precio">$${p.precio}</p>
-                        <small>Etapa: ${p.rango_edad}</small>
-                    </div>
-                `;
-            });
-        });
+    // Funcion para cargar productos filtrados por categoria
+    function filtrarProductos(idCategoria = 'todos') {
+        const lista = document.getElementById('productos-lista');
+        lista.innerHTML = '<p>Cargando productos...</p>';
+
+        let url = '../backend/api/get_productos.php';
+        if (idCategoria !== 'todos') {
+            url += `?id_categoria=${idCategoria}`;
+        }
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                lista.innerHTML = ''; 
+                
+                if (data.length === 0) {
+                    lista.innerHTML = '<p>No hay productos en esta etapa por el momento.</p>';
+                    return;
+                }
+
+                data.forEach(p => {
+                    lista.innerHTML += `
+                        <div class="tarjeta-producto">
+                            <img src="${p.imagen_url}" alt="${p.nombre}" class="producto-img">
+                            <h3>${p.nombre}</h3>
+                            <p class="precio">$${p.precio}</p>
+                            <small>Etapa: ${p.rango_edad}</small>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    }
+    document.addEventListener('DOMContentLoaded', () => filtrarProductos('todos'));
 </script>
 
 <?php include 'includes/footer.php'; ?>
