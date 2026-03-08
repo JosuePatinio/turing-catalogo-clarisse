@@ -9,12 +9,32 @@
 <?php endif; ?>
 <?php include 'includes/head.php';?>
 
-<div class="form-container">
-    <h2>Iniciar Sesión</h2>
-    <input type="text" id="username" placeholder="Usuario">
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="login()" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Entrar</button>
-    <p id="mensaje" style="color: red; text-align: center; margin-top: 10px;"></p>
+<!-- Formulario -->
+<div class="login-wrapper">
+    <div class="form-container">
+        <form id="loginForm" onsubmit="event.preventDefault(); login();">
+            <div class="login-header">
+                <h1>Catálogo<span> Clarisse</span></h1>
+                <p>Panel de Inicio</p>
+            </div>
+            
+            <div class="input-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" placeholder="Ingresa tu usuario" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <span>Iniciar Sesión</span>
+            </button>
+            
+            <p id="mensaje" class="error-msg"></p>
+        </form>
+    </div>
 </div>
 
 <script>
